@@ -1,0 +1,2 @@
+C:\Users\Zolkin\Documents\Studium\6. Semester\Mustererkennung und maschinelles Sehen\Praktikum_01\Praktikum_01\MMS-2020-A01_Listings\Debug\MMS-2020-A01_Listings.exe
+C:\Users\Zolkin\Documents\Studium\6. Semester\Mustererkennung und maschinelles Sehen\Praktikum_01\Praktikum_01\MMS-2020-A01_Listings\Debug\MMS-2020-A01_Listings.pdb

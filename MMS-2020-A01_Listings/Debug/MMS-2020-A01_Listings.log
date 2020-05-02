@@ -1,0 +1,12 @@
+﻿  main.cpp
+C:\Users\Zolkin\Documents\Studium\6. Semester\Mustererkennung und maschinelles Sehen\Praktikum_01\Praktikum_01\MMS-2020-A01_Listings\mms_image_io.inl(58,14): warning C4244: "=": Konvertierung von "double" in "int", möglicher Datenverlust
+C:\Users\Zolkin\Documents\Studium\6. Semester\Mustererkennung und maschinelles Sehen\Praktikum_01\Praktikum_01\MMS-2020-A01_Listings\main.cpp(21): message : Siehe Verweis auf die gerade kompilierte Instanziierung "bool mms::readPGM<unsigned char>(const std::string &,mms::TImage<unsigned char,std::allocator<PixelType>> &)" der Funktions-Vorlage.
+          with
+          [
+              PixelType=unsigned char
+          ]
+C:\Users\Zolkin\Documents\Studium\6. Semester\Mustererkennung und maschinelles Sehen\Praktikum_01\Praktikum_01\MMS-2020-A01_Listings\mms_image_io.inl(59,15): warning C4244: "=": Konvertierung von "double" in "int", möglicher Datenverlust
+C:\Users\Zolkin\Documents\Studium\6. Semester\Mustererkennung und maschinelles Sehen\Praktikum_01\Praktikum_01\MMS-2020-A01_Listings\mms_image_io.inl(60,12): warning C4244: "=": Konvertierung von "double" in "int", möglicher Datenverlust
+C:\Users\Zolkin\Documents\Studium\6. Semester\Mustererkennung und maschinelles Sehen\Praktikum_01\Praktikum_01\MMS-2020-A01_Listings\mms_image.inl(34): warning C4715: "mms::TImage<unsigned char,std::allocator<unsigned char> >::operator()": Nicht alle Codepfade geben einen Wert zurück.
+C:\Users\Zolkin\Documents\Studium\6. Semester\Mustererkennung und maschinelles Sehen\Praktikum_01\Praktikum_01\MMS-2020-A01_Listings\mms_image.inl(44): warning C4715: "mms::TImage<unsigned char,std::allocator<unsigned char> >::operator()": Nicht alle Codepfade geben einen Wert zurück.
+  MMS-2020-A01_Listings.vcxproj -> C:\Users\Zolkin\Documents\Studium\6. Semester\Mustererkennung und maschinelles Sehen\Praktikum_01\Praktikum_01\MMS-2020-A01_Listings\Debug\MMS-2020-A01_Listings.exe
