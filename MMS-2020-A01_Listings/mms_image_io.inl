@@ -5,6 +5,30 @@
 
 using namespace std;
 
+template<class PixelType>
+void parseBinary(ifstream& pgm_file, TImage<PixelType>& f_image) {
+	// Copies all data into buffer
+	size_t buffer_size = f_image.getWidth() * f_image.getHeight();
+	char* buffer = new char[buffer_size];
+	int c = 0;
+
+	pgm_file.read(buffer, buffer_size);
+
+	for (PixelType& pixel : f_image) {
+		pixel = buffer[c];
+		c++;
+	}
+}
+template<class PixelType>
+void parseASCII(ifstream& pgm_file, TImage<PixelType>& f_image) {
+	//Extract the image data
+	for (PixelType& pixel : f_image) {
+			string val;
+			pgm_file >> val;
+			pixel = stoi(val);
+	}
+}
+
 template<class ImageType>
 int maxVal(ImageType& f_image) {
 	int maxVal = 0;
@@ -37,15 +61,21 @@ bool mms::readPGM(const std::string& f_filename, TImage<PixelType>& f_image)
 	//4. Empty
 	//5. Image Height
 	//6. Empty
-	ifstream pgm_file(f_filename);
+	ifstream pgm_file(f_filename, std::ios_base::binary);
+	if (!pgm_file.good()) { return false; }
 	string line;
 	int format, width, height, max;
-	smatch m;
+	smatch m,s;
 	vector<string> vals;
 
 	//Extract the header data
 	while (getline(pgm_file, line)) {
-		//if comment: continue
+		// if comment: continue
+		regex_search(line, s, regex("\\S"));
+		if (s.str(0) == "#") {
+			continue; 
+		}
+
 		while (regex_search(line, m, regex("(-?\\d+(\\.\\d+)*)"))) {
 			vals.push_back(m.str(1));
 			line = m.suffix().str();
@@ -60,21 +90,18 @@ bool mms::readPGM(const std::string& f_filename, TImage<PixelType>& f_image)
 	max = stod(vals.at(3));
 	f_image = TImage<PixelType>(width, height);
 
-	//Extract the image data
-	try {
-		for (int i = 0; i < width; i++) {
-			for (int j = 0; j < height; j++) {
-				string val;
-				pgm_file >> val;
-				if (val != "") {
-					f_image(i, j) = stoi(val);
-				}
-			}
-		}
+	if (format == 2) {
+		parseASCII(pgm_file, f_image);
 	}
-	catch (exception ex) {
+	if (format == 5) {
+		parseBinary(pgm_file, f_image);
+	}
+	else {
+		cout << "Wrong file format." << endl;
 		return false;
 	}
+
+	pgm_file.close();
 
 	return true;
 }

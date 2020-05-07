@@ -21,10 +21,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="mms_image.inl">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
     </None>
     <None Include="mms_image_io.inl">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -35,6 +35,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="mms_image_io.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mms_image_tools.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

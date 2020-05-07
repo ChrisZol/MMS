@@ -2,6 +2,7 @@
 #define mms_image_io_hpp
 #include "mms_image.hpp"
 #include <string>
+#include <stdio.h>
 namespace mms
 {
     template <class PixelType>

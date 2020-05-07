@@ -108,6 +108,7 @@
     <ClInclude Include="mms_image.hpp" />
     <ClInclude Include="mms_image_arithmetic.hpp" />
     <ClInclude Include="mms_image_io.hpp" />
+    <ClInclude Include="mms_image_tools.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

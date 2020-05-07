@@ -97,6 +97,7 @@ inline void TImage<PixelType, AllocatorType>::resize(int f_width, int f_height)
 {
 	//Data is cleared
 	m_data.clear();
+	m_data.resize(f_width * f_height);
 
 	//Resizing
 	m_width = f_width;
