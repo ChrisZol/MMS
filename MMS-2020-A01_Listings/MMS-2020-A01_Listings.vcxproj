@@ -107,6 +107,7 @@
   <ItemGroup>
     <ClInclude Include="mms_image.hpp" />
     <ClInclude Include="mms_image_arithmetic.hpp" />
+    <ClInclude Include="mms_image_histogram_tools.hpp" />
     <ClInclude Include="mms_image_io.hpp" />
     <ClInclude Include="mms_image_tools.hpp" />
   </ItemGroup>

@@ -35,6 +35,14 @@ namespace mms {
 	template<class PixelType>
     void clampImage(PixelType f_min, PixelType f_max, TImage<PixelType>& f_image)
     {
+        // TODO:
+        // a.) -1 P.: clampImage(): Die Implementierung funktioniert so nicht, 
+        // z.B. wenn man ein Bild mit 0-255 Grauwerten in den Bereich von 10-250 Grauwerten "clampen" möchte.
+        // Bei deiner Implementierung hätte es keine Auswirkung, ob die Funktion mit 
+        // f_min=10, f_max=50 oder f_min=20, f_max=60 aufgerufen wird. 
+        // Stattdessen muss jeder Pixelwert mit "f_min" und "f_max" verglichen werden und der Wert bei einer 
+        // Unter-/Überschreitung auf "f_min" bzw. "f_max" gesetzt werden.
+
         int min, max;
         getMinMax(min, max, f_image);
         int divisor = (max - min) / (f_max - f_min);
@@ -49,8 +57,8 @@ namespace mms {
 	template<class PixelType>
     void getMinMax(PixelType& f_min, PixelType& f_max, const TImage<PixelType>& f_image)
     {
-        PixelType maxVal = 0;
-        PixelType minVal = 255;
+        PixelType maxVal = std::numeric_limits<PixelType>::min();
+        PixelType minVal = std::numeric_limits<PixelType>::max();
 
         for (PixelType pixel : f_image) {
             if (pixel > maxVal) {
