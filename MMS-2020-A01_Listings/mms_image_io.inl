@@ -117,7 +117,7 @@ bool mms::savePGM(const std::string& f_filename, const TImage<PixelType>& f_imag
 
 	//Image Data
 	for (auto x : f_image) {
-		pgm_file << toascii(x) << " ";
+		pgm_file << to_string(x) << " ";
 
 		//Adding a new line when the image width is reached
 		c++;
