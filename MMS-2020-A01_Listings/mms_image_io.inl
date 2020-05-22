@@ -93,7 +93,7 @@ bool mms::readPGM(const std::string& f_filename, TImage<PixelType>& f_image)
 	if (format == 2) {
 		parseASCII(pgm_file, f_image);
 	}
-	if (format == 5) {
+	else if (format == 5) {
 		parseBinary(pgm_file, f_image);
 	}
 	else {

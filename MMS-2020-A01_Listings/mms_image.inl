@@ -28,7 +28,7 @@ inline PixelType& TImage<PixelType, AllocatorType>::operator()(int f_x, int f_y)
 {
 	// Return a reference to the pixel at position f_x and f_y.
 	if (!m_data.empty()) {
-		int pos = (f_x * m_height) + f_y;
+		int pos = (f_y * m_width) + f_x;
 		return m_data.at(pos);
 	}
 }
@@ -38,7 +38,7 @@ inline const PixelType& TImage<PixelType, AllocatorType>::operator()(int f_x, in
 {
 	// Return a reference to the pixel at position f_x and f_y.
 	if (!m_data.empty()) {
-		int pos = (f_x * m_height) + f_y;
+		int pos = (f_y * m_width) + f_x;
 		return m_data.at(pos);
 	}
 }

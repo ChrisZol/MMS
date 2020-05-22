@@ -43,5 +43,8 @@
     <ClInclude Include="mms_image_histogram_tools.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="mms_canny.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

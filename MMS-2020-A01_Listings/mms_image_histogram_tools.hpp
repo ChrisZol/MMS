@@ -79,8 +79,11 @@ namespace mms
 		for (PixelType& pixel : f_image) {
 			float res = ((float)(pixel - f_min) / (float)(f_max - f_min));
 			int i = k * res;
+
+			// Making sure there is no overflow
 			if (i > max) { i = max; }
 			if (i < min) { i = min; }
+
 			pixel = i;
 		}
 	}
@@ -88,6 +91,13 @@ namespace mms
 	//Histogramm-Dehnung
 	template<class PixelType, class HistogramDataType>
 	void histogram_stretching(TImage<PixelType>& f_image, float p_min, float p_max) {
+		//TODO:
+		//a) - 1 P.: Die Histogrammgröße(size) sollte nicht in Abhängigkeit vom minimalen und maximalen Grauwert spezifiziert werden, 
+		//	z.b in Z. 96. Wenn das Bild beispielsweise im Wertebereich von 50 und 99 liegt, so wird ein Histogramm der Größe 50 erstellt, 
+		//	d.h.die Indizes im Histogramm(std::vector) laufen von 0 bist 50 (und nicht von 50 bis 99).D.h.es kommt zu falschen Zugriffen 
+		//	z.B.bei der Berechnung der Quantilsfunktion oder der Histogrammlinearisierung, sodass das Ergebnis dann fehlerhaft ist.
+		//	Im konkreten Fall funktioniert das, da das Bild sich über den gesamten Wertebereich von 0 bis 255 erstreckt.
+		//	Um jedoch auch auf anderen Bildern zu funktionieren, muss daher das Histogramm über den gesamten Bereich erstellt werden.
 		PixelType min, max;
 		getMinMax(min, max, f_image);
 		std::vector<HistogramDataType> hf(((max - min) + 1), 0);
@@ -106,6 +116,13 @@ namespace mms
 	// Histogramm-Linearisierung
 	template<class PixelType, class HistogramDataType>
 	void histogram_equalization(TImage<PixelType>& f_image) {
+		//TODO:
+		//c2) - 2, 5 P.: Die Implementierung der Funktion histogramLinearization() ist falsch.
+		//	Es wird eine doppelte Normalisierung durchgeführt(Z. 121 und Z. 130 durch die Division mit c_hf.at(k)).
+		//	Nur eine davon ist notwendig.
+		//	Nach der Berechnung der Transferfunktion "t" werden die Pixelwerte für das Ausgabebild nicht gesetzt, 
+		//	z.B. "f_image(i, j) = t[static_cast(f_image(i, j))];".Dementsprechend bleibt dein Ausgabebild auch unverändert.
+		//	Hier solltest du dir nochmal genau Folien 34ff.in Vorlesung 3 anschauen
 		PixelType min, max;
 		getMinMax(min, max, f_image);
 		std::vector<HistogramDataType> hf(((max - min) + 1), 0);

@@ -105,6 +105,7 @@
     <None Include="mms_image_io.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="mms_canny.hpp" />
     <ClInclude Include="mms_image.hpp" />
     <ClInclude Include="mms_image_arithmetic.hpp" />
     <ClInclude Include="mms_image_histogram_tools.hpp" />
