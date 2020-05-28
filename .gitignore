@@ -3,6 +3,7 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+opencv-4.3.0/
 # User-specific files
 *.rsuser
 *.suo

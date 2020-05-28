@@ -64,6 +64,5 @@ namespace mms {
         f_min = minVal;
     }
     
-    
 } //namespace mms
 #endif

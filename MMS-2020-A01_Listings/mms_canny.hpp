@@ -45,11 +45,11 @@ namespace mms
 	int base_direction(float direction) {
 		if ((direction > 67.5f && direction < 112.5f) || (direction > -112.5f && direction < -67.5f)) {
 			//rechts o. links
-			return 90;
+			return 0;
 		}
 		else if ((direction < -157.5 || direction > 157.5f) || (direction > -22.5f && direction < 22.5f)) {
 			//oben o. unten
-			return 0;
+			return 90;
 		}
 		else if ((direction > 112.5f && direction < 157.5f) || (direction > 67.5f && direction < -22.5f)) {
 			//rechts oben o. links unten
@@ -86,7 +86,6 @@ namespace mms
 					}
 				}
 				result_img(x, y) = result;
-				//result(x, y) /= (k / 2);
 			}
 		}
 		return result_img;
