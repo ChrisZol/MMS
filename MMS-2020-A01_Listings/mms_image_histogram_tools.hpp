@@ -18,7 +18,7 @@ namespace mms
 		PixelType min, max;
 		getMinMax(min, max, f_image);
 				
-		if (hf.size() != ((max - min) + 1)) { return; }
+		if (hf.size() != (max + 1)) { return; }
 
 		for (PixelType& pixel : f_image) {
 			++hf.at(pixel);
@@ -27,9 +27,9 @@ namespace mms
 	
 	// Histogramm Normalisierung
 	template<class HistogramDataType>
-	void normalize_histogram(std::vector<HistogramDataType>& hf, int pixelcount) {
-		for (HistogramDataType& g : hf) {
-			g = g / pixelcount;
+	void normalize_histogram(std::vector<HistogramDataType>& hf, int pixelcount, std::vector<float>& nf) {
+		for (int i = 0; i < hf.size(); i++) {
+			nf.at(i) = (float)(hf.at(i)) / (float)pixelcount;
 		}
 	}
 

@@ -9,6 +9,19 @@
 
 namespace mms {
 
+    template<class PixelTypeSrc, class PixelTypeDest>
+    void cropImage(const TImage<PixelTypeSrc>& f_srcImage, TImage<PixelTypeDest>& f_destImage, int start_x, int start_y)
+    {
+        for (int y = start_y; y < start_y + f_destImage.getHeight(); y++) {
+            for (int x = start_x; x < start_x + f_destImage.getWidth(); x++) {
+                if (x >= f_srcImage.getWidth() || y >= f_srcImage.getHeight()) {
+                    return;
+                }
+                f_destImage(x - start_x, y - start_y) = f_srcImage(x, y);
+            }
+        }
+    }
+
     // Copy image data of f_srcImage to f_destImage
     // NOTE: image must be of same width and height.
 	template<class PixelTypeSrc, class PixelTypeDest>
