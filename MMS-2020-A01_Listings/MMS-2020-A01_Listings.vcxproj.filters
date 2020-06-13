@@ -26,6 +26,9 @@
     <None Include="mms_image_io.inl">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="mms_classification.inl">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mms_image.hpp">
@@ -50,6 +53,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="mms_segmentation.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mms_classification.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

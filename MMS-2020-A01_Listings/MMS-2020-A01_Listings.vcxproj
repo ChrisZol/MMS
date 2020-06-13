@@ -97,15 +97,26 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Program Files\opencv\build\include;C:\Program Files\opencv\sources\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\Program Files\opencv\build\x64\vc14\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world430d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="mms_classification.inl" />
     <None Include="mms_image.inl" />
     <None Include="mms_image_io.inl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mms_canny.hpp" />
+    <ClInclude Include="mms_classification.hpp" />
     <ClInclude Include="mms_hough_transformation.hpp" />
     <ClInclude Include="mms_image.hpp" />
     <ClInclude Include="mms_image_arithmetic.hpp" />

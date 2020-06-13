@@ -10,8 +10,15 @@
 namespace mms
 {
 	template <class PixelType>
-	void segmentation(TImage<PixelType>& img, TImage<PixelType>& segment_img) {
-		float T = otsu(img);
+	void segmentation(bool otsu, TImage<PixelType>& img, TImage<PixelType>& segment_img) {
+		float T;
+		if (otsu) {
+			T = otsu(local_img);
+		}
+		else {
+			iterative_selection(local_img, 0);
+		}
+
 		for (int y = 0; y < img.getHeight(); y++) {
 			for (int x = 0; x < img.getWidth(); x++) {
 				if (img(x, y) > T) {
@@ -24,7 +31,7 @@ namespace mms
 		}
 	}
 	template <class PixelType>
-	void segmentation(TImage<PixelType>& img, TImage<PixelType>& segment_img, int local_width, int local_height) {
+	void segmentation(bool otsu_seg, TImage<PixelType>& img, TImage<PixelType>& segment_img, int local_width, int local_height) {
 		TImage<PixelType> local_img(local_width, local_height);
 		TImage<PixelType> segments(img.getWidth() / local_width, img.getHeight() / local_height);
 		int s_x = 0, s_y = 0;
@@ -32,8 +39,14 @@ namespace mms
 		for (int y = 0; y < img.getHeight(); y+=local_height) {
 			for (int x = 0; x < img.getWidth(); x+=local_width) {
 				cropImage(img, local_img, x, y);
+				float T;
 
-				float T = otsu(local_img);
+				if (otsu_seg) {
+					T = otsu(local_img);
+				}
+				else {
+					T = iterative_selection(local_img, 0);
+				}
 
 				segments(s_x, s_y) = T;
 				if(s_x < segments.getWidth() - 1)
@@ -185,7 +198,6 @@ namespace mms
 							}
 						}
 					}
-					cout << "finished"<< endl;
 				}
 			}
 		}
